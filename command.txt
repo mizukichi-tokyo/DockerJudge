@@ -1,0 +1,11 @@
+curl -X POST -d 'language=ruby&source_code=puts+111&input=' \
+http://192.168.99.100:3000/api/run
+
+docker run \
+-v $HOME/coderunner:$HOME/coderunner \
+-v /usr/local/bin/docker:/usr/local/bin/docker \
+-v /usr/bin/docker:/usr/bin/docker \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-w $HOME/coderunner \
+-p 3000:3000 \
+--rm -i -t node /bin/bash
